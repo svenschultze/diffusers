@@ -226,7 +226,7 @@ class FluxFillPipeline(
         )
         # Flux latents are turned into 2x2 patches and packed. This means the latent width and height has to be divisible
         # by the patch size. So the vae scale factor is multiplied by the patch size to account for this
-        self.image_processor = VaeImageProcessor(vae_scale_factor=self.vae_scale_factor * 2)
+        self.image_processor = VaeImageProcessor(vae_scale_factor=self.vae_scale_factor * 2, do_resize=False)
         self.mask_processor = VaeImageProcessor(
             vae_scale_factor=self.vae_scale_factor * 2,
             vae_latent_channels=self.vae.config.latent_channels,
